@@ -1,19 +1,40 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
+#################################
+# Compiled sources              #
+#################################
 /dist
 /tmp
 
-# dependencies
+#################################
+# IDE generated files           #
+#################################
+.idea/
+*.iml
+
+#################################
+# Environment and config files  #
+#################################
+.env
+
+#################################
+# Node JS & NPM files           #
+#################################
 /node_modules
 /bower_components
-
-# misc
 /.sass-cache
 /connect.lock
 /coverage/*
-/libpeerconnection.log
-npm-debug.log
-testem.log
-.DS_Store
+
+#################################
+# Logs and temp files           #
+#################################
 .tern-port
+*.log
+*.swp
+*~
+
+#################################
+# OS generated files            #
+#################################
+Thumbs.db
+.directory
+.DS_Store
