@@ -31,7 +31,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('clean', function () {
-  return gulp.src([`${DIST}*.js`, `${DIST}*.css`, `${DIST}*.hbs`, `${TMP}*.js`, `${TMP}*.css`, `${TMP}*.hbs`,], { read: false })
+  return gulp.src([`${DIST}*.js`, `${DIST}*.css`, `${DIST}*.hbs`, `${DIST}*.svg`, `${TMP}*.js`, `${TMP}*.css`, `${TMP}*.hbs`,], { read: false })
     .pipe(clean());
 });
 
