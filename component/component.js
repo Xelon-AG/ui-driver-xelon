@@ -3,17 +3,18 @@ import NodeDriver from 'shared/mixins/node-driver';
 
 // do not remove LAYOUT, it is replaced at build time with a base64 representation of the template of the hbs template
 // we do this to avoid converting template to a js file that returns a string and the cors issues that would come along with that
+// noinspection JSAnnotator,JSHint
 const LAYOUT;
 /*!!!!!!!!!!!DO NOT CHANGE END!!!!!!!!!!!*/
 
 
 /*!!!!!!!!!!!GLOBAL CONST START!!!!!!!!!!!*/
 // EMBER API Access - if you need access to any of the Ember API's add them here in the same manner rather then import them via modules, since the dependencies exist in rancher we dont want to expor the modules in the amd def
-const computed     = Ember.computed;
-const get          = Ember.get;
-const set          = Ember.set;
-const alias        = Ember.computed.alias;
-const service      = Ember.inject.service;
+const computed     = Ember.computed; // jshint ignore:line
+const get          = Ember.get; // jshint ignore:line
+const set          = Ember.set; // jshint ignore:line
+const alias        = Ember.computed.alias; // jshint ignore:line
+const service      = Ember.inject.service; // jshint ignore:line
 
 const defaultRadix = 10;
 const defaultBase  = 1024;
@@ -22,7 +23,7 @@ const defaultBase  = 1024;
 
 
 /*!!!!!!!!!!!DO NOT CHANGE START!!!!!!!!!!!*/
-export default Ember.Component.extend(NodeDriver, {
+export default Ember.Component.extend(NodeDriver, { // jshint ignore:line
   driverName: '%%DRIVERNAME%%',
   config:     alias('model.%%DRIVERNAME%%Config'),
   app:        service(),
@@ -30,7 +31,7 @@ export default Ember.Component.extend(NodeDriver, {
   init() {
     // This does on the fly template compiling, if you mess with this :cry:
     const decodedLayout = window.atob(LAYOUT);
-    const template      = Ember.HTMLBars.compile(decodedLayout, {
+    const template      = Ember.HTMLBars.compile(decodedLayout, { // jshint ignore:line
       moduleName: 'nodes/components/driver-%%DRIVERNAME%%/template'
     });
     set(this,'layout', template);
