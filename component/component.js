@@ -46,8 +46,15 @@ export default Ember.Component.extend(NodeDriver, { // jshint ignore:line
     // bootstrap is called by rancher ui on 'init', you're better off doing your setup here rather then the init function to ensure everything is setup correctly
     let config = get(this, 'globalStore').createRecord({
       type: '%%DRIVERNAME%%Config',
-      cpuCount: 2,
-      memorySize: 2048,
+      apiUrl: 'https://vdc.xelon.ch/api/user/',
+      cpuCores: 2,
+      devicePassword: 'Xelon22',
+      diskSize: 20,
+      kubernetesId: 'kub1',
+      memory: 2,
+      password: '',
+      swapDiskSize: 2,
+      username: '',
     });
 
     set(this, 'model.%%DRIVERNAME%%Config', config);
