@@ -1,59 +1,53 @@
 <section class="horizontal-form">
   {{#accordion-list showExpandAll=false as | al expandFn |}}
-    {{!-- This line shows the driver title which you don't have to change it --}}
+    <!-- driver title -->
     <div class="over-hr mb-20"><span>{{driverOptionsTitle}}</span></div>
 
-    {{!-- An example input option --}}
-    <div class="row box mt-20">
-      <h4>Instance Options</h4>
+    <!-- account access -->
+    {{#accordion-list-item title="Account Access"
+                           detail="Username Email and Password will be used to launch Xelon VDC devices"
+                           expandAll=expandAll
+                           expand=(action expandFn)
+                           expandOnInit=true
+    }}
       <div class="row">
-        <div class="col span-2 col-inline">
-          <label>CPUs</label>
+        <div class="col span-6">
+          <label class="acc-label">Username{{field-required}}</label>
+          {{input type="text"
+                  class="form-control"
+                  value=config.username
+                  placeholder="Your Xelon email address"
+          }}
         </div>
-
-        <div class="col span-1">
-          {{config.cpuCount}}
-        </div>
-        <div class="col span-3">
-          {{input-slider value=config.cpuCount valueMin=1 valueMax=32}}
-        </div>
-
-        <div class="col span-2 col-inline">
-          <label>Memory Size</label>
-        </div>
-        <div class="col span-4">
-          <div class="input-group">
-            {{input-integer min=1 value=config.memorySize classNames="form-control"}}
-            <div class="input-group-addon bg-default">MB</div>
-          </div>
+        <div class="col span-6">
+          <label class="acc-label">Password{{field-required}}</label>
+          {{input type="password"
+                  class="form-control"
+                  value=config.password
+                  placeholder="Your Xelon password"
+          }}
         </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col span-12">
+          <label class="acc-label">Xelon API URL</label>
+          {{input type="text"
+                  class="form-control"
+                  value=config.apiUrl
+                  placeholder="Xelon API base URL"
+          }}
+        </div>
+      </div>
+    {{/accordion-list-item}}
 
-    {{!-- This following contains the Name, Labels and Engine Options fields --}}
+    <!-- This following contains the Name, Labels and Engine Options fields -->
     <div class="over-hr"><span>{{templateOptionsTitle}}</span></div>
-
-    {{form-name-description
-      model=model
-      nameRequired=true
-    }}
-
-    {{form-user-labels
-      initialLabels=labelResource.labels
-      setLabels=(action 'setLabels')
-      expandAll=expandAll
-      expand=(action expandFn)
-    }}
-
-    {{form-engine-opts
-      machine=model
-      showEngineUrl=showEngineUrl
-    }}
+    {{form-name-description model=model nameRequired=true}}
+    {{form-user-labels initialLabels=labelResource.labels setLabels=(action 'setLabels') expandAll=expandAll expand=(action expandFn)}}
+    {{form-engine-opts machine=model showEngineUrl=showEngineUrl}}
   {{/accordion-list}}
-
-  {{!-- This component shows errors produced by validate() in the component --}}
+  <!-- errors produced by validate() in the component -->
   {{top-errors errors=errors}}
-
-  {{!-- This component shows the Create and Cancel buttons --}}
+  <!-- Create and Cancel buttons -->
   {{save-cancel save="save" cancel="cancel"}}
 </section>
