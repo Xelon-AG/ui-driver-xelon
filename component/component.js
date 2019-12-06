@@ -16,8 +16,6 @@ const set          = Ember.set; // jshint ignore:line
 const alias        = Ember.computed.alias; // jshint ignore:line
 const service      = Ember.inject.service; // jshint ignore:line
 
-const defaultRadix = 10;
-const defaultBase  = 1024;
 /*!!!!!!!!!!!GLOBAL CONST END!!!!!!!!!!!*/
 
 
@@ -46,7 +44,7 @@ export default Ember.Component.extend(NodeDriver, { // jshint ignore:line
     // bootstrap is called by rancher ui on 'init', you're better off doing your setup here rather then the init function to ensure everything is setup correctly
     let config = get(this, 'globalStore').createRecord({
       type: '%%DRIVERNAME%%Config',
-      apiUrl: 'https://vdc.xelon.ch/api/user/',
+      apiBaseUrl: 'https://vdc.xelon.ch/api/user/',
       cpuCores: 2,
       devicePassword: 'Xelon22',
       diskSize: 20,
@@ -67,13 +65,6 @@ export default Ember.Component.extend(NodeDriver, { // jshint ignore:line
     var errors = get(this, 'errors')||[];
     if ( !get(this, 'model.name') ) {
       errors.push('Name is required');
-    }
-
-    // Add more specific errors
-
-    // Check something and add an error entry if it fails:
-    if ( parseInt(get(this, 'config.memorySize'), defaultRadix) < defaultBase ) {
-      errors.push('Memory Size must be at least 1024 MB');
     }
 
     // Set the array of errors for display,
