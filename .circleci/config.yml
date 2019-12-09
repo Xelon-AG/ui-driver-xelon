@@ -56,3 +56,20 @@ jobs:
           name: Publish release on GitHub
           command: |
             ghr --token ${GITHUB_TOKEN} --username ${CIRCLE_PROJECT_USERNAME} --repository ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${CIRCLE_TAG} ./dist/
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+      - github-release:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
