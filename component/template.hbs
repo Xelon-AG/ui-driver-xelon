@@ -124,5 +124,6 @@
   <!-- errors produced by validate() in the component -->
   {{top-errors errors=errors}}
   <!-- Create and Cancel buttons -->
-  {{save-cancel save="save" cancel="cancel"}}
+  {{save-cancel save=(action "save")
+                cancel=(action "cancel")}}
 </section>
