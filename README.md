@@ -18,11 +18,12 @@ to v2.2.0, you can select Node Drivers directly in the navigation bar.
     | Key               | Value                                                                                                                      |
     | ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
     | Download URL      | `https://github.com/Xelon-AG/docker-machine-driver-xelon/releases/download/v1.0.1/docker-machine-driver-xelon_linux_amd64` |
-    | Custom UI URL     | `https://github.com/Xelon-AG/ui-driver-xelon/releases/download/v0.0.1/component.js`                                        |
-    | Whitelist Domains | `github.com`                                                                                                               |
+    | Custom UI URL     | `https://vdcstatic.xelon.ch/files/component.js`                                        |
+    | Whitelist Domains | `vdcstatic.xelon.ch`                                                                                                               |
 
 4. Wait for the driver to become "Active"
 5. From the Global view, go to Clusters -> Add Cluster, your driver and custom UI should show up.
+![Configuration screen](docs/configuration-screen.png)
 
 
 ## Development
