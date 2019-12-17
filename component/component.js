@@ -67,6 +67,14 @@ export default Ember.Component.extend(NodeDriver, { // jshint ignore:line
       errors.push('Name is required');
     }
 
+    if ( !get(this, 'model.%%DRIVERNAME%%Config.username') ) {
+      errors.push('Username is required');
+    }
+
+    if ( !get(this, 'model.%%DRIVERNAME%%Config.password') ) {
+      errors.push('Password is required');
+    }
+
     // Set the array of errors for display,
     // and return true if saving should continue.
     if ( get(errors, 'length') ) {
