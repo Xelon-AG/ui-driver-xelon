@@ -42,3 +42,22 @@ For other users to see your driver, you need to build it and host the output on 
 * `npm run build`
 * Copy the contents of the `dist` directory onto a webserver.
   * If your Rancher is configured to use HA or SSL, the server must also be available via HTTPS.
+
+## Release process
+
+The release process uses continuous integration from CircelCI which means the code base should
+be ready to release any time.
+
+#### Checklist for releasing Xelon UI Driver
+
+The below steps are for final release:
+
+1. Check that latest build compiles and passes tests.
+2. Trigger release creation by tagging git commit with
+   ```bash
+   # X.Y.Z. is a release version, e.g. 1.2.0
+   $ git tag -a vX.Y.Z -m "Release vX.Y.Z."
+   ```
+3. Wait for the build to finish and release created.
+4. Update release information if needed
+
