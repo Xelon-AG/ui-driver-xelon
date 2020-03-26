@@ -11,20 +11,12 @@
                            expandOnInit=true
     }}
       <div class="row">
-        <div class="col span-6">
-          <label class="acc-label">Username{{field-required}}</label>
-          {{input type="text"
-                  class="form-control"
-                  value=config.username
-                  placeholder="Your Xelon email address"
-          }}
-        </div>
-        <div class="col span-6">
-          <label class="acc-label">Password{{field-required}}</label>
+        <div class="col span-12">
+          <label class="acc-label">Token{{field-required}}</label>
           {{input type="password"
                   class="form-control"
-                  value=config.password
-                  placeholder="Your Xelon password"
+                  value=config.token
+                  placeholder="Your Xelon authentication token"
           }}
         </div>
       </div>

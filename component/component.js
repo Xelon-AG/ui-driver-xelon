@@ -44,15 +44,14 @@ export default Ember.Component.extend(NodeDriver, { // jshint ignore:line
     // bootstrap is called by rancher ui on 'init', you're better off doing your setup here rather then the init function to ensure everything is setup correctly
     let config = get(this, 'globalStore').createRecord({
       type: '%%DRIVERNAME%%Config',
-      apiBaseUrl: 'https://vdc.xelon.ch/api/user/',
+      apiBaseUrl: 'https://vdc.xelon.ch/api/service/',
       cpuCores: 2,
       devicePassword: 'Xelon22',
       diskSize: 20,
       kubernetesId: 'kub1',
       memory: 2,
-      password: '',
       swapDiskSize: 2,
-      username: '',
+      token: '',
     });
 
     set(this, 'model.%%DRIVERNAME%%Config', config);
@@ -67,12 +66,8 @@ export default Ember.Component.extend(NodeDriver, { // jshint ignore:line
       errors.push('Name is required');
     }
 
-    if ( !get(this, 'model.%%DRIVERNAME%%Config.username') ) {
-      errors.push('Username is required');
-    }
-
-    if ( !get(this, 'model.%%DRIVERNAME%%Config.password') ) {
-      errors.push('Password is required');
+    if ( !get(this, 'model.%%DRIVERNAME%%Config.token') ) {
+      errors.push('Token is required');
     }
 
     // Set the array of errors for display,
